@@ -17,12 +17,10 @@ window.renderStatistics = function (ctx, names, times) {
 
 
   var max = -1;
-  // var maxIndex = -1;
   for (var i = 0; i < times.length; i++) {
     var time = times[i];
     if (time > max) {
       max = time;
-      // maxIndex = i;
     }
   }
 
@@ -30,11 +28,8 @@ window.renderStatistics = function (ctx, names, times) {
   var columnWidth = 40; // px
   var captionHeight = 20; // px
   var playerColorOwn = 'rgba(255,0,0,1)';
-  // var playerColor = 'rgba(0,0,256, '+ Math.random() +')';
-  // var histogramWidth = 150;
   var step = (histogramHeight) / (max - 0);
 
-  // var barHeigth = 20; // px;
   var indent = 50; // px;
   var initialX = 140; // px;
   var initialY = 50; // px;
