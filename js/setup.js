@@ -1,10 +1,40 @@
 // Файл setup.js
 'use strict';
 
-var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
-var WIZARD_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
-var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+var WIZARD_NAMES = [
+  'Иван',
+  'Хуан Себастьян',
+  'Мария',
+  'Кристоф',
+  'Виктор',
+  'Юлия',
+  'Люпита',
+  'Вашингтон'
+];
+
+var WIZARD_SURNAMES = [
+  'да Марья',
+  'Верон',
+  'Мирабелла',
+  'Вальц',
+  'Онопко',
+  'Топольницкая',
+  'Нионго',
+  'Ирвинг'
+];
+
+var COAT_COLORS = [
+  'rgb(101, 137, 164)',
+  'rgb(241, 43, 107)',
+  'rgb(146, 100, 161)',
+  'rgb(56, 159, 117)',
+  'rgb(215, 210, 55)',
+  'rgb(0, 0, 0)'
+];
+
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
+
+var wizardCount = 4;
 
 var userDialog = document.querySelector('.setup');
 userDialog.classList.remove('hidden');
@@ -17,17 +47,26 @@ function getRandomItem(array) {
   return array[Math.round(Math.random() * array.length)];
 }
 
-
-var wizardCount = 4;
-var wizards = [];
-
-for (var j = 0; j < wizardCount; j++) {
-  wizards[j] = {
+var genRandomWizard = function () {
+  return {
     name: getRandomItem(WIZARD_NAMES) + ' ' + getRandomItem(WIZARD_SURNAMES),
     coatColor: getRandomItem(COAT_COLORS),
     eyesColor: getRandomItem(EYES_COLORS)
   };
-}
+
+};
+
+var genRandomWizards = function (count) {
+  var wizards = [];
+
+  for (var j = 0; j < count; j++) {
+    wizards[j] = genRandomWizard();
+  }
+
+  return wizards;
+};
+
+var wizards = genRandomWizards(wizardCount);
 
 var renderWizard = function (wizard) {
   var wizardElement = similarWizardTemplate.cloneNode(true);
