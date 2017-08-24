@@ -78,11 +78,15 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 
-var fragment = document.createDocumentFragment();
-for (var i = 0; i < wizards.length; i++) {
-  fragment.appendChild(renderWizard(wizards[i]));
+function renderWizards(appendBlock, source) {
+  var fragment = document.createDocumentFragment();
+  for (var i = 0; i < source.length; i++) {
+    fragment.appendChild(renderWizard(source[i]));
+  }
+
+  appendBlock.appendChild(fragment);
 }
 
-similarListElement.appendChild(fragment);
+renderWizards(similarListElement, wizards);
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden');
